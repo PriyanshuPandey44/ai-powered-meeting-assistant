@@ -1,0 +1,60 @@
+:root {
+  --bg: #f5f6fa; --card: #fff; --text: #1c2033; --muted: #6b7280; --border: #e3e6ee;
+  --primary: #4f46e5; --primary-text: #fff; --danger-bg: #fee2e2; --danger: #b91c1c;
+  --warn-bg: #fef3c7; --warn: #92400e; --soft: #eef0ff;
+  color-scheme: light dark;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #12141c; --card: #1b1e2b; --text: #e8eaf2; --muted: #9aa1b5; --border: #2c3042;
+    --primary: #818cf8; --primary-text: #12141c; --danger-bg: #3b1519; --danger: #fca5a5;
+    --warn-bg: #3a2b0e; --warn: #fcd34d; --soft: #24284a;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--text); font: 15px/1.55 system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif; }
+.app { max-width: 1120px; margin: 0 auto; padding: 24px 16px 48px; }
+.header h1 { margin: 0 0 4px; font-size: 26px; }
+.header p { margin: 0 0 20px; color: var(--muted); }
+.layout { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 20px; align-items: start; }
+@media (max-width: 860px) { .layout { grid-template-columns: 1fr; } }
+.main { display: flex; flex-direction: column; gap: 16px; }
+.sidebar { position: sticky; top: 16px; }
+@media (max-width: 860px) { .sidebar { position: static; } }
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 18px; display: flex; flex-direction: column; gap: 12px; }
+.card h3 { margin: 0; font-size: 16px; }
+.card p { margin: 0; }
+.results { display: flex; flex-direction: column; gap: 16px; }
+.results h2 { margin: 4px 0 0; font-size: 20px; }
+textarea { width: 100%; resize: vertical; padding: 12px; border: 1px solid var(--border); border-radius: 8px; background: var(--bg); color: inherit; font: inherit; }
+textarea:focus-visible, button:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+.label { font-weight: 600; }
+.row { display: flex; align-items: center; gap: 10px; }
+.row.between { justify-content: space-between; }
+.row.wrap { flex-wrap: wrap; }
+.muted { color: var(--muted); }
+.small { font-size: 13px; }
+.btn { border: 0; border-radius: 8px; padding: 10px 16px; font: inherit; font-weight: 600; cursor: pointer; display: inline-block; }
+.btn.primary { background: var(--primary); color: var(--primary-text); }
+.btn.primary:disabled { opacity: .6; cursor: not-allowed; }
+.btn.secondary { background: var(--soft); color: var(--text); border: 1px solid var(--border); }
+.small-btn { padding: 4px 12px; font-size: 13px; }
+.link { background: none; border: 0; color: var(--primary); cursor: pointer; font: inherit; padding: 0; }
+.alert { padding: 10px 14px; border-radius: 8px; font-size: 14px; }
+.alert.error { background: var(--danger-bg); color: var(--danger); }
+.alert.warn { background: var(--warn-bg); color: var(--warn); }
+ul { margin: 0; padding-left: 20px; }
+li + li { margin-top: 4px; }
+.table-wrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; }
+th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--border); vertical-align: top; }
+th { font-size: 12px; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); }
+.ns { color: var(--muted); font-style: italic; }
+.email { margin: 0; white-space: pre-wrap; font: inherit; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 12px; }
+.history { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 6px; }
+.history li { display: flex; align-items: stretch; border: 1px solid var(--border); border-radius: 8px; margin: 0; }
+.history li.active { border-color: var(--primary); background: var(--soft); }
+.history-item { flex: 1; text-align: left; background: none; border: 0; color: inherit; font: inherit; padding: 8px 10px; cursor: pointer; display: flex; flex-direction: column; min-width: 0; }
+.history-item strong { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.icon-btn { background: none; border: 0; color: var(--muted); cursor: pointer; padding: 0 10px; }
+.icon-btn:hover { color: var(--danger); }
